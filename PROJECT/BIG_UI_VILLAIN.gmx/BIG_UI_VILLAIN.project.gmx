@@ -29,6 +29,9 @@
     </scripts>
     <script>scripts\script9.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fDefault</font>
+  </fonts>
   <objects name="objects">
     <objects name="UI_VILLAIN">
       <object>objects\oGUI</object>

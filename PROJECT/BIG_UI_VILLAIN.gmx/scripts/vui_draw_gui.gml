@@ -30,15 +30,15 @@ else if (STYLE == 3) //DOS
     
     draw_rectangle_colour(X, Y, X+W, Y+H, C, C, C, C, false);
     
-    draw_line_width_colour(X+6, Y+6, X+W-6, Y+6, 4, c_gray, c_gray);
-    draw_line_width_colour(X+W-8, Y+6, X+W-8, Y+H-6, 4, c_gray, c_gray);
-    draw_line_width_colour(X+6, Y+H-6, X+W-6, Y+H-6, 4, c_gray, c_gray);
-    draw_line_width_colour(X+8, Y+H-6, X+8, Y+6, 4, c_gray, c_gray);
+    draw_line_width_colour(X+6, Y+6, X+W-6, Y+6, 4, c_ltgray, c_ltgray);
+    draw_line_width_colour(X+W-8, Y+6, X+W-8, Y+H-6, 4, c_ltgray, c_ltgray);
+    draw_line_width_colour(X+6, Y+H-6, X+W-6, Y+H-6, 4, c_ltgray, c_ltgray);
+    draw_line_width_colour(X+8, Y+H-6, X+8, Y+6, 4, c_ltgray, c_ltgray);
 }
 
 /* DRAW TITLE */
 var TITLE = GUID.TITLE;
-draw_text_transformed(X+4, Y+4, TITLE, 3, 5, 0);
+draw_text_transformed(X+4, Y+4, TITLE, 0.5, 0.75, 0);
 
 /* DRAW LIST */
 var ITEMS = GUID.ITEMS;

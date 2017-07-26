@@ -28,16 +28,21 @@
             <string>//Initialize
 vui_init();
 
-//Make panelz
-for (var i=0;i&lt;16;i++)
-{
-    var GUI = vui_add_gui(random_range(69,room_width-69), random_range(69,room_height-69), 256, 420, choose(0, 1, 2, 3));
-    GUI.TITLE = choose("MWAAAAH", "HELLO", "MEEEEEEEEEEEEEEEEDIIIIIC", "POOTIS");
-    GUI.COL = choose(c_white,c_blue,c_aqua);
-}
-
 //Graphic settings
 draw_set_colour(c_white);
+draw_set_font(fDefault);
+
+/* The colour..? */
+cBROWN = make_colour_rgb(65,35,18);
+cWHITE = make_colour_rgb(255,234,208);
+cBLACK = make_colour_rgb(50,41,47);
+cMINT = make_colour_rgb(121,255,206);
+cRED = make_colour_rgb(215,38,56);
+
+//Make panelz
+var GUI = vui_add_gui(16, 16, 420, 420, 3);
+GUI.TITLE = "Hello world!";
+GUI.COL = cBROWN;
 </string>
           </argument>
         </arguments>
