@@ -3,11 +3,42 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <NewExtensions/>
+  <NewExtensions>
+    <extension index="0">extensions\VERY_UI_villain</extension>
+  </NewExtensions>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\sGUI_TILE</sprite>
+    <sprite>sprites\sFont</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <scripts name="GUI_villain">
+      <scripts name="ELEMENTS">
+        <script>scripts\vui_add_panel.gml</script>
+        <script>scripts\vui_add_texPanel.gml</script>
+        <script>scripts\vui_add_label.gml</script>
+        <script>scripts\vui_add_button.gml</script>
+      </scripts>
+      <script>scripts\vui_init.gml</script>
+      <script>scripts\vui_add_gui.gml</script>
+      <script>scripts\vui_add_element.gml</script>
+      <script>scripts\vui_draw_gui.gml</script>
+      <script>scripts\vui_draw_shit.gml</script>
+    </scripts>
+    <script>scripts\script9.gml</script>
+  </scripts>
+  <objects name="objects">
+    <objects name="UI_VILLAIN">
+      <object>objects\oGUI</object>
+      <object>objects\oGUIELEMENT</object>
+    </objects>
+    <object>objects\oControl</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\room0</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
