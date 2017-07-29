@@ -33,6 +33,8 @@ H = 0;
 
 PARENT = 0;
 TYPE = 0;
+
+instance_deactivate_object(id);
 </string>
           </argument>
         </arguments>

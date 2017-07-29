@@ -8,10 +8,9 @@ var H = argument4;
 var PARENT = argument5;
 var TYPE = argument6;
 
-var GUI_ELEMENT = guiELEMENT;
-
-var GUID = GUI_ELEMENT[# 0,GUI];
-var LIST = GUID.ITEMS;
+//var GUI_ELEMENT = guiELEMENT;
+//var GUID = GUI_ELEMENT[# 0,GUI];
+var LIST = GUI.ITEMS;
 
 var ELEMENT_INST = instance_create(X, Y, oGUIELEMENT);
 ELEMENT_INST.OX = X;

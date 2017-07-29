@@ -14,8 +14,8 @@ ds_grid_resize(GUI, 2, ID+1);
 var guID = instance_create(X, Y, oGUI);
 
 //Attribute
-guID.X = X;
-guID.Y = Y;
+//guID.X = X;
+//guID.Y = Y;
 guID.W = W;
 guID.H = H;
 guID.STYLE = STYLE;

@@ -1,4 +1,4 @@
-///vui_add_panel(gui,x,y,w,h,tex,parent)
+///vui_add_texPanel(gui,x,y,w,h,tex,parent)
 
 var GUI = argument0;
 

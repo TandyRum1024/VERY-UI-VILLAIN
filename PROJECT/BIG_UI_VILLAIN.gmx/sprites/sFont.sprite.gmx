@@ -7,7 +7,7 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>0</bbox_left>
+  <bbox_left>1</bbox_left>
   <bbox_right>7</bbox_right>
   <bbox_top>0</bbox_top>
   <bbox_bottom>7</bbox_bottom>
@@ -67,5 +67,20 @@
     <frame index="44">images\sFont_44.png</frame>
     <frame index="45">images\sFont_45.png</frame>
     <frame index="46">images\sFont_46.png</frame>
+    <frame index="47">images\sFont_47.png</frame>
+    <frame index="48">images\sFont_48.png</frame>
+    <frame index="49">images\sFont_49.png</frame>
+    <frame index="50">images\sFont_50.png</frame>
+    <frame index="51">images\sFont_51.png</frame>
+    <frame index="52">images\sFont_52.png</frame>
+    <frame index="53">images\sFont_53.png</frame>
+    <frame index="54">images\sFont_54.png</frame>
+    <frame index="55">images\sFont_55.png</frame>
+    <frame index="56">images\sFont_56.png</frame>
+    <frame index="57">images\sFont_57.png</frame>
+    <frame index="58">images\sFont_58.png</frame>
+    <frame index="59">images\sFont_59.png</frame>
+    <frame index="60">images\sFont_60.png</frame>
+    <frame index="61">images\sFont_61.png</frame>
   </frames>
 </sprite>

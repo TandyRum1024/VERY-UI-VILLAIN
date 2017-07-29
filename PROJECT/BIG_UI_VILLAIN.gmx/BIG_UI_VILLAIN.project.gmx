@@ -10,6 +10,9 @@
   <sprites name="sprites">
     <sprite>sprites\sGUI_TILE</sprite>
     <sprite>sprites\sFont</sprite>
+    <sprite>sprites\sFONT_BIG</sprite>
+    <sprite>sprites\sButton</sprite>
+    <sprite>sprites\sTexture</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -26,8 +29,9 @@
       <script>scripts\vui_add_element.gml</script>
       <script>scripts\vui_draw_gui.gml</script>
       <script>scripts\vui_draw_shit.gml</script>
+      <script>scripts\vui_update.gml</script>
     </scripts>
-    <script>scripts\script9.gml</script>
+    <script>scripts\CREDITS.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fDefault</font>

@@ -30,19 +30,108 @@ vui_init();
 
 //Graphic settings
 draw_set_colour(c_white);
-draw_set_font(fDefault);
+//draw_set_font(fDefault);
+
+var FNT_MAP = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+FNT_PIXEL = font_add_sprite_ext(sFONT_BIG, FNT_MAP, false, 0);
+
+draw_set_font(FNT_PIXEL);
 
 /* The colour..? */
 cBROWN = make_colour_rgb(65,35,18);
+cDARK = make_colour_rgb(32,26,24);
+cPURPLE = make_colour_rgb(154,63,214);
 cWHITE = make_colour_rgb(255,234,208);
 cBLACK = make_colour_rgb(50,41,47);
 cMINT = make_colour_rgb(121,255,206);
 cRED = make_colour_rgb(215,38,56);
 
 //Make panelz
-var GUI = vui_add_gui(16, 16, 420, 420, 3);
-GUI.TITLE = "Hello world!";
-GUI.COL = cBROWN;
+var GUI = vui_add_gui(42, 42, 420, 420, 1);
+GUI.TITLE = "HELLO WORLD!!!1!1!";
+GUI.COL = cDARK;
+//And components
+vui_add_panel(GUI, 42, 42, 64, 42, cRED, -1);
+vui_add_label(GUI, 116, 54, 0.5, 0.5, "&lt;- This is PANEL.", cMINT, -1);
+
+vui_add_label(GUI, 38, 100, 0.7, 0.7, '"AYE HELLO! :3"', cPURPLE, -1);
+vui_add_label(GUI, 220, 105, 0.5, 0.5, "&lt;- This is LABEL.", cMINT, -1);
+
+BTN = vui_add_button(GUI, 42, 142, 126, 42, "CLICKEY", cPURPLE, cWHITE, -1);
+vui_add_label(GUI, 175, 150, 0.5, 0.5, "&lt;- This is BUTTON.", cMINT, -1);
+
+vui_add_texPanel(GUI, 126, 200, 168, 168, sprite_get_texture(sTexture, 0), -1);
+
+//PONG BALL
+POING = vui_add_gui(512, 512, 128, 128, 1);
+POING.TITLE = "NOTHING";
+POING.COL = cBROWN;
+
+PVX = 2;
+PVY = 2;
+
+//GRAAAAB
+GRAB = -1;
+
+GX = 0;
+GY = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>vui_update();
+
+if (BTN.CLICK)
+{
+    randomize();
+    BTN.STR = choose("YAY :D",":D","MOOORE 8D","OH YEAH","&gt;__&lt;");
+    
+    //vui_add_gui(random_range(0, 800), random_range(0, 512), 420, 420, choose(0, 1, 2, 3, 4));
+}
+
+//USELESS SHIT
+POING.x += PVX;
+POING.y += PVY;
+
+if (POING.x &lt; 0)
+{
+    POING.x = 0;
+    PVX *= -random_range(0.8,1.2);
+}
+else if (POING.x+128 &gt; 1024)
+{
+    POING.x = 1024 - 128;
+    PVX *= -random_range(0.8,1.2);
+}
+
+if (POING.y &lt; 0)
+{
+    POING.y = 0;
+    PVY *= -random_range(0.8,1.2);
+}
+else if (POING.y+128 &gt; 768)
+{
+    POING.y = 768 - 128;
+    PVY *= -random_range(0.8,1.2);
+}
 </string>
           </argument>
         </arguments>
@@ -67,8 +156,10 @@ GUI.COL = cBROWN;
             <kind>1</kind>
             <string>texture_set_interpolation(false);
 
-vui_draw_shit();
+//vui_draw_shit();
 draw_text(10,10,"FPS "+string(fps_real));
+draw_text(42,42,"Daramzee hun Chetbarquee tago pa.#ABCDEFGHIJKLMNOPQRSTUVWXYZ#abcdefghijklmnopqrstuvwxyz#0123456789");
+
 </string>
           </argument>
         </arguments>
