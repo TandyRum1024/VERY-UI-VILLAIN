@@ -30,12 +30,12 @@ vui_init();
 
 //Graphic settings
 draw_set_colour(c_white);
-//draw_set_font(fDefault);
+draw_set_font(fDefault);
 
 var FNT_MAP = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 FNT_PIXEL = font_add_sprite_ext(sFONT_BIG, FNT_MAP, false, 0);
 
-draw_set_font(FNT_PIXEL);
+//draw_set_font(FNT_PIXEL);
 
 /* The colour..? */
 cBROWN = make_colour_rgb(65,35,18);
@@ -154,11 +154,11 @@ else if (POING.y+128 &gt; 768)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>texture_set_interpolation(false);
+            <string>//texture_set_interpolation(false);
 
-//vui_draw_shit();
+vui_draw_shit();
 draw_text(10,10,"FPS "+string(fps_real));
-draw_text(42,42,"Daramzee hun Chetbarquee tago pa.#ABCDEFGHIJKLMNOPQRSTUVWXYZ#abcdefghijklmnopqrstuvwxyz#0123456789");
+//draw_text(42,42,"Daramzee hun Chetbarquee tago pa.#ABCDEFGHIJKLMNOPQRSTUVWXYZ#abcdefghijklmnopqrstuvwxyz#0123456789");
 
 </string>
           </argument>
