@@ -25,15 +25,27 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>OX = 0;
+            <string>//Original Positions for parent/GUI related issue
+OX = 0;
 OY = 0;
 
+//Width &amp; height of element.
 W = 0;
 H = 0;
 
+//The parent of this element
 PARENT = 0;
+
+/*
+    (Check out script vui_init for ENUMs)
+    PANEL - A coloured BOX.
+    texPANEL - a TEXTURED box.
+    LABEL - A TEXT.
+    BUTTON - A clickable BUTTON.
+*/
 TYPE = 0;
 
+//Deactive to get free unusual hats ^^
 instance_deactivate_object(id);
 </string>
           </argument>

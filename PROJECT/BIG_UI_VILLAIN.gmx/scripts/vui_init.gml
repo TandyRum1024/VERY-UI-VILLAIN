@@ -13,6 +13,7 @@
       :: TILED - FaAaAaAAAancy tiled box.
       :: DOS - DOS-LIKE box.
 */
+//Enum for easy referencing
 enum uiTYPE
 {
     PANEL = 0,
@@ -25,4 +26,4 @@ enum uiTYPE
 guiELEMENT = ds_grid_create(2,0);
 
 //Update Depth?
-guiMustUpdate = true;
+guiUPDATEPLZ = true;

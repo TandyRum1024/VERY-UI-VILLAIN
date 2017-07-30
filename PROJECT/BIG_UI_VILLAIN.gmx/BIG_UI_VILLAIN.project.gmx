@@ -28,7 +28,7 @@
       <script>scripts\vui_add_gui.gml</script>
       <script>scripts\vui_add_element.gml</script>
       <script>scripts\vui_draw_gui.gml</script>
-      <script>scripts\vui_draw_shit.gml</script>
+      <script>scripts\vui_draw.gml</script>
       <script>scripts\vui_update.gml</script>
     </scripts>
     <script>scripts\CREDITS.gml</script>

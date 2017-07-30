@@ -25,15 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>W = 0;
+            <string>//The size of GUI.
+W = 0;
 H = 0;
 
+/*
+- STYLE (NADA/COLOUR/TILED/DOS)
+  :: NADA (1) - Nothing. SEE-THRU
+  :: COLOUR (2) - Single coloured box.
+  :: TILED (3) - FaAaAaAAAancy tiled box.
+  :: DOS (4) - DOS-LIKE coloured box.
+*/
 STYLE = 0;
+//The list of GUI elements' INSTANCE ID.
 ITEMS = ds_list_create();
 
+//The "title" of GUI.
+//(Setting this to -1 will not draw the title.)
 TITLE = -1;
+//Colour for some STYLE
 COL = c_white;
 
+//deactive it for reduce FPS drop!
 instance_deactivate_object(id);
 </string>
           </argument>

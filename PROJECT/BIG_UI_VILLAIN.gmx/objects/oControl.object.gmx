@@ -32,11 +32,6 @@ vui_init();
 draw_set_colour(c_white);
 draw_set_font(fDefault);
 
-var FNT_MAP = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-FNT_PIXEL = font_add_sprite_ext(sFONT_BIG, FNT_MAP, false, 0);
-
-//draw_set_font(FNT_PIXEL);
-
 /* The colour..? */
 cBROWN = make_colour_rgb(65,35,18);
 cDARK = make_colour_rgb(32,26,24);
@@ -50,17 +45,24 @@ cRED = make_colour_rgb(215,38,56);
 var GUI = vui_add_gui(42, 42, 420, 420, 1);
 GUI.TITLE = "HELLO WORLD!!!1!1!";
 GUI.COL = cDARK;
+
 //And components
+
+//panel
 vui_add_panel(GUI, 42, 42, 64, 42, cRED, -1);
 vui_add_label(GUI, 116, 54, 0.5, 0.5, "&lt;- This is PANEL.", cMINT, -1);
 
+//label
 vui_add_label(GUI, 38, 100, 0.7, 0.7, '"AYE HELLO! :3"', cPURPLE, -1);
 vui_add_label(GUI, 220, 105, 0.5, 0.5, "&lt;- This is LABEL.", cMINT, -1);
 
+//button (ID used for checking button is pressed or not)
 BTN = vui_add_button(GUI, 42, 142, 126, 42, "CLICKEY", cPURPLE, cWHITE, -1);
 vui_add_label(GUI, 175, 150, 0.5, 0.5, "&lt;- This is BUTTON.", cMINT, -1);
 
+//Textured panel
 vui_add_texPanel(GUI, 126, 200, 168, 168, sprite_get_texture(sTexture, 0), -1);
+vui_add_label(GUI, 84, 380, 0.7, 0.7, "^ This is texPANEL.", cMINT, -1);
 
 //PONG BALL
 POING = vui_add_gui(512, 512, 128, 128, 1);
@@ -70,7 +72,7 @@ POING.COL = cBROWN;
 PVX = 2;
 PVY = 2;
 
-//GRAAAAB
+//GRABBIN' PILLS
 GRAB = -1;
 
 GX = 0;
@@ -156,7 +158,7 @@ else if (POING.y+128 &gt; 768)
             <kind>1</kind>
             <string>//texture_set_interpolation(false);
 
-vui_draw_shit();
+vui_draw();
 draw_text(10,10,"FPS "+string(fps_real));
 //draw_text(42,42,"Daramzee hun Chetbarquee tago pa.#ABCDEFGHIJKLMNOPQRSTUVWXYZ#abcdefghijklmnopqrstuvwxyz#0123456789");
 
