@@ -113,6 +113,7 @@ CURSOR = mouse_check_button(mb_left);
 
 CUR_OFFSET = lerp(CUR_OFFSET, CURSOR*8, 0.25);
 
+
 //Button thing Example!
 if (BTN.CLICK)
 {

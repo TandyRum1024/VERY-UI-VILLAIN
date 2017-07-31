@@ -20,7 +20,7 @@ else if (STYLE == 1) //COLOUR
     var C = GUID.COL;
     draw_rectangle_colour(X, Y, X+GUID.W, Y+GUID.H, C, C, C, C, false);
 }
-else if (STYLE == 2) //TILED
+else if (STYLE == 2) //TILED (NOT DONE, SORRY ;-;)
 {
     draw_sprite_stretched(sGUI_TILE, 0, X, Y, GUID.W, GUID.H);
 }
