@@ -13,6 +13,8 @@
     <sprite>sprites\sFONT_BIG</sprite>
     <sprite>sprites\sButton</sprite>
     <sprite>sprites\sTexture</sprite>
+    <sprite>sprites\sHando</sprite>
+    <sprite>sprites\sDrunkenTrademaniac</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -30,6 +32,8 @@
       <script>scripts\vui_draw_gui.gml</script>
       <script>scripts\vui_draw.gml</script>
       <script>scripts\vui_update.gml</script>
+      <script>scripts\vui_get_inst.gml</script>
+      <script>scripts\vui_sort_depth.gml</script>
     </scripts>
     <script>scripts\CREDITS.gml</script>
   </scripts>

@@ -24,8 +24,18 @@ guID.STYLE = STYLE;
 GUI[# 0, ID] = guID;
 
 //Depth!
-GUI[# 1, ID] = ID;
+
+//Nudge
+var INST;
+for (var i=0;i<ID;i++)
+{
+    GUI[# 1, i]++;
+    
+    INST = GUI[# 0, i];
+    INST.depth++;
+}
+GUI[# 1, ID] = 0;
+guID.depth = 0;
 
 //SUGOIIIIIIIIIIiIIIIiIIIIiiiI!
-
 return guID;

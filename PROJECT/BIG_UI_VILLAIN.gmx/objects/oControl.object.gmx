@@ -31,6 +31,10 @@ vui_init();
 //Graphic settings
 draw_set_colour(c_white);
 draw_set_font(fDefault);
+CURSOR = 0;
+CUR_OFFSET = 0;
+
+window_set_cursor(cr_none);
 
 /* The colour..? */
 cBROWN = make_colour_rgb(65,35,18);
@@ -64,19 +68,22 @@ vui_add_label(GUI, 175, 150, 0.5, 0.5, "&lt;- This is BUTTON.", cMINT, -1);
 vui_add_texPanel(GUI, 126, 200, 168, 168, sprite_get_texture(sTexture, 0), -1);
 vui_add_label(GUI, 84, 380, 0.7, 0.7, "^ This is texPANEL.", cMINT, -1);
 
-//PONG BALL
-POING = vui_add_gui(512, 512, 128, 128, 1);
-POING.TITLE = "NOTHING";
-POING.COL = cBROWN;
-
-PVX = 2;
-PVY = 2;
+//var DEPTHIND = vui_add_gui(512, 512, 128, 128, 1);
+DEPTHTEST = vui_add_gui(512, 512, 210, 210, 1);
+DEPTHTEST.TITLE = "DEPTH TEST :3";
+vui_add_texPanel(DEPTHTEST, 10, 10, 190, 190, sprite_get_texture(sDrunkenTrademaniac, 0), -1);
 
 //GRABBIN' PILLS
 GRAB = -1;
 
 GX = 0;
 GY = 0;
+
+//Some debug stuff
+DEBUG_MINFPS = 240;
+DEBUG_MAXFPS = 2048;
+DEBUG_AVGFPS = 0;
+DEBUG_FPSCTR = 0;
 </string>
           </argument>
         </arguments>
@@ -101,38 +108,22 @@ GY = 0;
             <kind>1</kind>
             <string>vui_update();
 
+//Faaaancy cursor animation?
+CURSOR = mouse_check_button(mb_left);
+
+CUR_OFFSET = lerp(CUR_OFFSET, CURSOR*8, 0.25);
+
+//Button thing Example!
 if (BTN.CLICK)
 {
+    show_debug_message("WHAT");
+    
     randomize();
     BTN.STR = choose("YAY :D",":D","MOOORE 8D","OH YEAH","&gt;__&lt;");
     
-    //vui_add_gui(random_range(0, 800), random_range(0, 512), 420, 420, choose(0, 1, 2, 3, 4));
-}
-
-//USELESS SHIT
-POING.x += PVX;
-POING.y += PVY;
-
-if (POING.x &lt; 0)
-{
-    POING.x = 0;
-    PVX *= -random_range(0.8,1.2);
-}
-else if (POING.x+128 &gt; 1024)
-{
-    POING.x = 1024 - 128;
-    PVX *= -random_range(0.8,1.2);
-}
-
-if (POING.y &lt; 0)
-{
-    POING.y = 0;
-    PVY *= -random_range(0.8,1.2);
-}
-else if (POING.y+128 &gt; 768)
-{
-    POING.y = 768 - 128;
-    PVY *= -random_range(0.8,1.2);
+    var SWAG = vui_add_gui(10+random(400), 10+random(300), 210, 210, 1);
+    SWAG.TITLE = "A demoman #"+string(SWAG.depth);
+    vui_add_texPanel(SWAG, 10, 10, 190, 190, sprite_get_texture(sDrunkenTrademaniac, 0), -1);
 }
 </string>
           </argument>
@@ -157,11 +148,47 @@ else if (POING.y+128 &gt; 768)
           <argument>
             <kind>1</kind>
             <string>//texture_set_interpolation(false);
+//Debug thing
+if (DEBUG_FPSCTR &lt; 360 &amp;&amp; ++DEBUG_FPSCTR &gt;= 360)
+{
+    DEBUG_FPSCTR = 0;
+    DEBUG_MINFPS = fps_real;
+    DEBUG_MAXFPS = fps_real;
+}
+
+if (fps_real &gt;= 0)
+{
+    if (fps_real &lt; DEBUG_MINFPS) DEBUG_MINFPS = fps_real;
+    if (fps_real &gt; DEBUG_MAXFPS) DEBUG_MAXFPS = fps_real;
+}
+
+DEBUG_AVGFPS += fps_real;
+DEBUG_AVGFPS /= 2;
+
+var MINCOL = make_colour_hsv(lerp(0,42,(dsin(DEBUG_FPSCTR)+1)/2),255,255);
+var MAXCOL = c_blue;
+if ((DEBUG_FPSCTR mod 42) &lt;= 24) MAXCOL = c_yellow;
 
 vui_draw();
-draw_text(10,10,"FPS "+string(fps_real));
-//draw_text(42,42,"Daramzee hun Chetbarquee tago pa.#ABCDEFGHIJKLMNOPQRSTUVWXYZ#abcdefghijklmnopqrstuvwxyz#0123456789");
+draw_text(10,10,"FPS_RL "+string(fps_real));
+draw_text_transformed_colour(20,42,"FPS_MIN "+string(DEBUG_MINFPS),0.5,0.5,0,MINCOL,MINCOL,MINCOL,MINCOL,1);
+draw_text_transformed_colour(20,84,"FPS_MAX "+string(DEBUG_MAXFPS),0.5,0.5,0,MAXCOL,MAXCOL,MAXCOL,MAXCOL,1);
+draw_text_transformed_colour(20,126,"FPS_AVG "+string(DEBUG_AVGFPS),0.5,0.5,0,c_lime,c_lime,c_lime,c_lime,1);
 
+
+draw_sprite_ext(sHando, CURSOR, mouse_x-16, mouse_y+16-CURSOR*8, 1, 1, 1, c_black, 0.75);
+draw_sprite(sHando, CURSOR, mouse_x, mouse_y-CUR_OFFSET);
+
+var SIZE = ds_grid_height(guiELEMENT);
+var NAME,INST;
+
+for (var i=0;i&lt;SIZE;i++)
+{
+    INST = guiELEMENT[# 0, SIZE-1 - i];
+    NAME = INST.TITLE;
+    
+    draw_text_transformed(10, 200 + 42 * i + 5, string(i)+" : "+NAME+" , "+string(INST.depth), 0.7, 0.7, 0);
+}
 </string>
           </argument>
         </arguments>

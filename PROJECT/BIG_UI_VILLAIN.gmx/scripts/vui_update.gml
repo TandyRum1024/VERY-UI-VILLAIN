@@ -8,13 +8,65 @@ var MY = window_mouse_get_y();
 
 //Grid size
 var SIZE = ds_grid_height(ELEMENTS);
+var ALLOWED = true;
+var ALLOWEDCURRENT = true;
 
-for (var i=0;i<SIZE;i++)
+for (var i=SIZE-1;i>=0;i--)
 {
     CURRENT = ELEMENTS[# 0, i];
+    
     //Check the GUI's visible-ness
     if (CURRENT.visible)
     {
+        //Grab thing
+        var UX = CURRENT.x;
+        var UY = CURRENT.y;
+        
+        if (mouse_check_button_pressed(mb_left) && point_in_rectangle(MX, MY, UX, UY, UX + CURRENT.W, UY + CURRENT.H))
+        {
+            if (ALLOWED && point_in_rectangle(MX, MY, UX, UY, UX + CURRENT.W, UY + 30) && GRAB == -1)
+            {
+                //Setup some grabby thing,
+                GRAB = CURRENT;
+                GX = UX - MX;
+                GY = UY - MY;
+                
+                if (ELEMENTS[# 1, i] != 0)
+                {
+                    //Pushie :3
+                    for (var g=0;g<SIZE;g++)
+                    {
+                        ELEMENTS[# 1, g]++;
+                    }
+                    
+                    //And nudge this shit into oblivion.
+                    ELEMENTS[# 1, i] = 0;
+                    guiUPDATEPLZ = true;
+                }
+                
+                ALLOWEDCURRENT = false;
+            }
+            else if (ALLOWED && GRAB == -1)
+            {
+                //Bail out if nothing must be done.
+                if (ELEMENTS[# 1, i] != 0)
+                {
+                    //Pushie :3
+                    for (var g=0;g<SIZE;g++)
+                    {
+                        ELEMENTS[# 1, g]++;
+                    }
+                    
+                    //And nudge this shit into oblivion.
+                    ELEMENTS[# 1, i] = 0;
+                    guiUPDATEPLZ = true;
+                }
+                
+                
+                ALLOWEDCURRENT = false;
+            }
+        }
+        
         ITEMS = CURRENT.ITEMS;
         
         //Loop thru all elements
@@ -27,7 +79,7 @@ for (var i=0;i<SIZE;i++)
             C_ITEM.x = C_ITEM.OX + CURRENT.x;
             C_ITEM.y = C_ITEM.OY + CURRENT.y;
             
-            if (TYPE == uiTYPE.BUTTON)
+            if (TYPE == uiTYPE.BUTTON && GRAB == -1 && ALLOWED)
             {
                 var DET = point_in_rectangle(MX, MY, C_ITEM.x, C_ITEM.y, C_ITEM.x + C_ITEM.W, C_ITEM.y + C_ITEM.H);
                 
@@ -65,27 +117,7 @@ for (var i=0;i<SIZE;i++)
             }
         }
         
-        //Grab thing
-        var UX = CURRENT.x;
-        var UY = CURRENT.y;
-        
-        if (point_in_rectangle(MX, MY, UX, UY, UX + CURRENT.W, UY + 30) && mouse_check_button_pressed(mb_left) && GRAB == -1)
-        {
-            //Setup some grabby thing,
-            GRAB = CURRENT;
-            GX = UX - MX;
-            GY = UY - MY;
-            
-            //Pushie :3
-            for (var g=0;g<SIZE;g++)
-            {
-                ELEMENTS[# 1, g]++;
-            }
-            
-            //And nudge this shit into oblivion.
-            ELEMENTS[# 1, i] = 0;
-            guiUPDATEPLZ = true;
-        }
+        ALLOWED = ALLOWEDCURRENT;
     }
 }
 
@@ -101,9 +133,9 @@ if (mouse_check_button_released(mb_left))
 if (guiUPDATEPLZ)
 {
     //Here's some trick :
-    // use ds_grid instead of array for easy sort.
-    // It's easy as eating rice cake while laying down and dying from suffocation.
-    ds_grid_sort(guiELEMENT, 1, 0);
+    // Don't use ds_grid's sort and updating depth.
+    // You have to loop twice, If you do that.
+    vui_sort_depth();
     
     //Reset the variable, to sort it only once
     guiUPDATEPLZ = false;
